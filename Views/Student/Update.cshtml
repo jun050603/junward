@@ -1,0 +1,63 @@
+﻿@model EnrollmentSystem.Models.ViewModels.UpdateStudentViewModel
+@using EnrollmentSystem.Models.Enum
+
+<div class="d-flex flex-column align-items-center justify-content-center container border shadow rounded mt-4">
+    <div class="container">
+        <h1 class="fw-bold mx-4 my-2 text-center">STUDENT DETAILS</h1>
+    </div>
+    <div class="container border shadow rounded mx-4 my-2">
+        <form method="post" asp-action="Update">
+            <input type="hidden" id="Id" asp-for="Id"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="row mt-4">
+                <div class="col-12 col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="John" />
+                        <label asp-for="FirstName">First Name</label>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="MiddleName" class="form-control" autocomplete="middlename" aria-required="true" placeholder="Cena" />
+                        <label asp-for="MiddleName">Middle Name</label>
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="LastName" class="form-control" autocomplete="lastname" aria-required="true" placeholder="Cena" />
+                        <label asp-for="LastName">Last Name</label>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Email" class="form-control" autocomplete="email" aria-required="true" placeholder="example@gmail.com" />
+                        <label asp-for="Email">Email</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <select asp-for="Program" class="form-select">
+                            <option selected disabled>Select a Program</option>
+                            @foreach (var item in Html.GetEnumSelectList<Programs>())
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        <label asp-for="Program">Program</label>
+                        <span asp-validation-for="Program" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 d-flex align-items-center justify-content-center mb-4">
+                <button type="submit" class="btn btn-outline-primary rounded-pill px-4">Update</button>
+            </div>                  
+        </form>
+    </div>
+</div>
+
+

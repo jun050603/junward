@@ -1,0 +1,38 @@
+﻿@model EnrollmentSystem.Models.ApplicationUser
+@using EnrollmentSystem.Models.Enum
+@using EnrollmentSystem.Helpers
+
+<div class="container d-flex align-content-center justify-content-center border rounded shadow mt-4 p-4">
+    <div class="container d-flex flex-column align-items-center justify-items-center rounded shadow border p-4 m-0">
+        <div class="container">
+            <h1 class="fw-bold text-center w-100 m">STUDENT DETAILS</h1>
+        </div>
+        <div class="container row align-items-center p-2 mt-1">
+            <div class="d-flex align-items-center border p-2 col-4">
+                <p class="fs-6 m-0"><span class="fw-bold">LAST NAME:</span> @Model.LastName</p>
+            </div>
+            <div class="d-flex align-items-center border p-2 col-4">
+                <p class="fs-6 m-0"><span class="fw-bold">FIRST NAME:</span> @Model.FirstName</p>
+            </div>
+            <div class="d-flex align-items-center border p-2 col-4">
+                <p class="fs-6 m-0"><span class="fw-bold">MIDDLE NAME:</span> @Model.MiddleName</p>
+            </div>
+        </div>
+
+        <div class="container row align-items-center p-2 mt-1">
+            <div class="d-flex align-items-center border p-2 col-6">
+                <p class="fs-6 m-0"><span class="fw-bold">EMAIL:</span> @Model.Email</p>
+            </div>
+            <div class="d-flex align-items-center border p-2 col-6">
+                <p class="fs-6 m-0">
+                    <span class="fw-bold">College:</span>
+                    @(Model.Program.HasValue ? Model.Program.Value.GetEnumDisplayName() : "Not Assigned")
+                </p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-outline-success rounded-pill">Update Student Details</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger rounded-pill">Delete Student</a>
+        </div>
+    </div>
+</div>
